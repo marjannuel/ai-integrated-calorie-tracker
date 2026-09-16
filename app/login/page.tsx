@@ -87,7 +87,7 @@ export default function LoginPage(){
                 <h1 className="text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] dark:border-neutral-700 py-1 md:py-2 select-none shadow-[0_8px_6px_-6px] shadow-neutral-800">Login</h1>
                 <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                     <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                    <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                    <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type='email'
                     placeholder='example@email.com'
                     value={email}
@@ -95,7 +95,7 @@ export default function LoginPage(){
                 </div>
                 <div className='relative flex justify-center gap-2 items-center'>
                     <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                    <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                    <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type={showPassword? 'text' : 'password'}
                     placeholder='***********'
                     value={password}
@@ -138,7 +138,7 @@ export default function LoginPage(){
                         </h1>
                         <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                             <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                            <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                            <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                             type='email'
                             placeholder='example@email.com'
                             required
@@ -148,7 +148,7 @@ export default function LoginPage(){
                         </div>
                         <div className='relative flex justify-center gap-2 items-center'>
                             <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                            <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                            <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                             type={showPassword? 'text' : 'password'}
                             placeholder='***********'
                             required
