@@ -47,7 +47,7 @@ export default function LoginPage(){
             setResult(true);
             setEmail('');
             setPassword('');
-            setNotif('account successfully created');
+            setNotif('account successfully created, check your email to confirm verification');
             setIsLoading(false);
         }
     }
@@ -166,7 +166,7 @@ export default function LoginPage(){
                         disabled={isLoading}>
                             <ArrowDownToLine className={`stroke-2 w-6 h-6 md:w-8 md:h-8 text-neutral-900 ${isLoading? 'animate-register-animation' : ''}`}/>
                         </button>
-                        <p className={` text-center capitalize text-sm md:text-base mt-1 md:mt-2 font-semibold ${result ? 'text-green-500' : 'text-red-500'}`}>
+                        <p className={` text-center capitalize text-sm md:text-base mt-1 md:mt-2 font-semibold ${result ? 'text-blue-500' : 'text-red-500'}`}>
                             {notif}
                         </p>
                     </form>
