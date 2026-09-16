@@ -31,7 +31,7 @@ export default function DashboardPage(){
                     placeholder='Activeness'>
                     </input>
                 </div>
-                <button className='mt-5 md:mt-7 text-sm md:text-base font-sans border w-52 md:w-76 py-1 md:py-1.5 rounded-2xl bg-amber-500 text-neutral-900 border-amber-500 md:hover:cursor-pointer'>
+                <button className='mt-5 md:mt-7 text-sm md:text-base font-sans border w-52 md:w-76 py-1 md:py-1.5 rounded-lg bg-amber-500 text-neutral-900 border-amber-500 md:hover:cursor-pointer md:hover:bg-amber-600'>
                     Confirm
                 </button>
             </div>

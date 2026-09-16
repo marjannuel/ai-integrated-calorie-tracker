@@ -23,8 +23,8 @@ export async function proxy(request: NextRequest){
     )
     const { data } = await supabase.auth.getClaims();
 
-    if (data?.claims){
-
+    if (data?.claims) {
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 
     return supabaseResponse;

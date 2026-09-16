@@ -89,6 +89,7 @@ export default function LoginPage(){
                     <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                     <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type='email'
+                    name='email'
                     placeholder='example@email.com'
                     value={email}
                     onChange={(e) => setEmail(e.currentTarget.value)}></input>
@@ -97,6 +98,7 @@ export default function LoginPage(){
                     <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                     <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type={showPassword? 'text' : 'password'}
+                    name='password'
                     placeholder='***********'
                     value={password}
                     onChange={(e) => setPassword(e.currentTarget.value)}>
@@ -140,6 +142,7 @@ export default function LoginPage(){
                             <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                             <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                             type='email'
+                            name='email'
                             placeholder='example@email.com'
                             required
                             value={email}
@@ -150,6 +153,7 @@ export default function LoginPage(){
                             <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                             <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                             type={showPassword? 'text' : 'password'}
+                            name='password'
                             placeholder='***********'
                             required
                             value={password}

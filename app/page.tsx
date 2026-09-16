@@ -9,7 +9,7 @@ export default function LandingPage(){
         Ready to track your <span className="text-green-500">calories</span>?
       </h1>
       <h2 className="capitalize italic text-center md:mt-1 md:text-lg">
-        (AI integrated calorie tracker)
+        (AI-integrated calorie tracker)
       </h2>
       <h3 className="text-center mt-20 md:mt-30 text-lg md:text-3xl font-mono font-thin">
         Start Now By Clicking Here
