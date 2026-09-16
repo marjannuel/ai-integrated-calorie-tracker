@@ -2,7 +2,7 @@
 import { Cake, UserRound, VenusAndMars, Activity } from 'lucide-react';
 import { useState } from 'react';
 
-export default function DashboardPage(){
+export default function SetupPage(){
     const [formData, setFormData] = useState({
         sex: '',
         activeness: ''

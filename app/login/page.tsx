@@ -76,7 +76,7 @@ export default function LoginPage(){
             setPassword('');
             setNotif2('Login Succesful');
             setIsLoading(false);
-            router.push('/dashboard');
+            router.push('/setup');
         }
     }
 
