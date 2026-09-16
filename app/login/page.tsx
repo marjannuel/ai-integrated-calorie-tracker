@@ -40,6 +40,7 @@ export default function LoginPage(){
         if (error) {
             setResult(false);
             setNotif(error.message)
+            setIsLoading(false);
         }
 
         else {
@@ -65,7 +66,8 @@ export default function LoginPage(){
 
         if (error) {
             setResult(false);
-            setNotif(error.message)
+            setNotif2(error.message)
+            setIsLoading(false);
         }
 
         else {
@@ -108,7 +110,7 @@ export default function LoginPage(){
                 <button className='mt-2 md:mt-3 border w-52 md:w-76 flex justify-center items-center rounded-2xl py-0.5 bg-amber-500 border-amber-500 md:hover:bg-amber-600 md:hover:cursor-pointer'
                 type='submit'
                 disabled={isLoading}>
-                    <ArrowRight className='stroke-2 w-6 h-6 md:w-8 md:h-8 text-neutral-900'/>
+                    <ArrowRight className={`stroke-2 w-6 h-6 md:w-8 md:h-8 text-neutral-900 ${isLoading? 'animate-login-animation' : ''}`}/>
                 </button>
                 <p className='capitalize mt-1 text-sm md:text-base flex justify-center items-center gap-1 select-none'>
                     no account yet? 

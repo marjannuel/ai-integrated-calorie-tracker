@@ -64,3 +64,14 @@ body {
 .animate-register-animation {
   animation: registerAnimation 1s ease-in-out infinite;
 }
+
+@keyframes loginAnimation {
+   0%, 100% { transform: translateX(0); opacity: 1; }
+  25% {transform: translateX(30); }
+  30%, 74% {opacity: 0; }
+  75% {transform: translateX(-15); }
+}
+
+.animate-login-animation {
+  animation: loginAnimation 1s ease-in-out infinite;
+}
