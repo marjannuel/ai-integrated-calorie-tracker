@@ -89,7 +89,7 @@ export default function LoginPage(){
             {isOpen && (
                 <div className='fixed inset-0 z-50 bg-black/80 flex justify-center items-center'
                 onClick={() =>  setIsOpen(false)}>
-                    <form className='relative z-10 dark:bg-neutral-900 w-[90%] max-w-md md:max-w-lg border-3 rounded-3xl border-neutral-500 flex flex-col items-center gap-1 pb-5'
+                    <form className='relative z-10 dark:bg-neutral-900 bg-white w-[90%] max-w-md md:max-w-lg border-3 rounded-3xl border-neutral-500 flex flex-col items-center gap-1 pb-5'
                     onSubmit={handleRegister}
                     onClick={(e) => e.stopPropagation()}>
                         <div className='w-[95%] pt-1 md:pt-2 flex justify-end items-center'>
