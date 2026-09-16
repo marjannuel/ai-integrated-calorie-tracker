@@ -4,8 +4,8 @@ import Link from 'next/link';
 export default function LandingPage(){
 
   return(
-    <div className="w-full h-dvh min-w-0 overflow-x-hidden flex flex-col items-center">
-      <h1 className="text-center uppercase mt-25 md:mt-30 font-bold text-2xl md:text-4xl md:font-extrabold">
+    <div className="w-full h-dvh min-w-0 overflow-x-hidden flex flex-col items-center justify-center">
+      <h1 className="text-center uppercase font-bold text-2xl md:text-4xl md:font-extrabold">
         Ready to track your <span className="text-green-500">calories</span>?
       </h1>
       <h2 className="capitalize italic text-center md:mt-1 md:text-lg">
