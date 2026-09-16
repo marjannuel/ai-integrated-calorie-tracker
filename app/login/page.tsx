@@ -8,6 +8,7 @@ export default function LoginPage(){
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const [notif, setNotif] = useState('');
+    const [notif2, setNotif2] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [result, setResult] = useState(false);
@@ -15,11 +16,11 @@ export default function LoginPage(){
     const [showPassword, setShowPassword] = useState(false);
 
     const toggleView = () => {
-        if (showPassword) {
+        if (showPassword && password.length > 0) {
             setShowPassword(false);
         }
 
-        else {
+        else if (!showPassword && password.length > 0) {
             setShowPassword(true);
         }
     }
@@ -50,21 +51,53 @@ export default function LoginPage(){
         }
     }
 
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setNotif2('');
+        setIsLoading(true);
+
+        const supabase = createClient();
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        })
+
+        if (error) {
+            setResult(false);
+            setNotif(error.message)
+        }
+
+        else {
+            setResult(true);
+            setEmail('');
+            setPassword('');
+            setNotif2('Login Succesful');
+            setIsLoading(false);
+            router.push('/dashboard');
+        }
+    }
+
     return(
         <div className="w-full h-dvh min-w-0 overflow-x-hidden flex justify-center items-center">
-            <form className="flex flex-col justify-center items-center w-full max-w-md md:max-w-lg gap-1">
+            <form className="flex flex-col justify-center items-center w-full max-w-md md:max-w-lg gap-1"
+            onSubmit={handleLogin}>
                 <h1 className="text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] dark:border-neutral-700 py-1 md:py-2 select-none shadow-[0_8px_6px_-6px] shadow-neutral-800">Login</h1>
                 <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                     <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                     <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type='email'
-                    placeholder='example@email.com'></input>
+                    placeholder='example@email.com'
+                    value={email}
+                    onChange={(e) => setEmail(e.currentTarget.value)}></input>
                 </div>
                 <div className='relative flex justify-center gap-2 items-center'>
                     <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                     <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
                     type={showPassword? 'text' : 'password'}
-                    placeholder='***********'>
+                    placeholder='***********'
+                    value={password}
+                    onChange={(e) => setPassword(e.currentTarget.value)}>
                     </input>
                     <button className='absolute right-2 z-10 bg-white dark:bg-neutral-800 p-1 flex justify-center items-center'
                     type='button'
@@ -72,7 +105,9 @@ export default function LoginPage(){
                         <Eye className='w-4 h-4 stroke-1 md:stroke-[1.5] md:hover:cursor-pointer'/>
                     </button>
                 </div>
-                <button className='mt-2 md:mt-3 border w-52 md:w-76 flex justify-center items-center rounded-2xl py-0.5 bg-amber-500 border-amber-500 md:hover:bg-amber-600 md:hover:cursor-pointer'>
+                <button className='mt-2 md:mt-3 border w-52 md:w-76 flex justify-center items-center rounded-2xl py-0.5 bg-amber-500 border-amber-500 md:hover:bg-amber-600 md:hover:cursor-pointer'
+                type='submit'
+                disabled={isLoading}>
                     <ArrowRight className='stroke-2 w-6 h-6 md:w-8 md:h-8 text-neutral-900'/>
                 </button>
                 <p className='capitalize mt-1 text-sm md:text-base flex justify-center items-center gap-1 select-none'>
@@ -82,8 +117,8 @@ export default function LoginPage(){
                         Register
                     </span>
                 </p>
-                <p>
-
+                <p className={` text-center capitalize text-sm md:text-base mt-1 md:mt-2 font-semibold ${result ? 'text-green-500' : 'text-red-500'}`}>
+                    {notif2}
                 </p>
             </form>
             {isOpen && (
