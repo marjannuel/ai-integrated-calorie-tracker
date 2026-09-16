@@ -8,13 +8,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-jakarta), var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #171717;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,45 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+@keyframes vibrate1 {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.animate-vibrate1 {
+  animation: vibrate1 0.9s ease-in-out infinite;
+}
+
+@keyframes vibrate2 {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+}
+
+.animate-vibrate2 {
+  animation: vibrate2 0.9s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: #ffffff; } /* emerald-500 */
+  50% { border-color: #171717; }       /* neutral-600 */
+}
+
+.animate-border-pulse {
+  animation: borderPulse 6s ease-in-out infinite;
+}
+
+@keyframes registerAnimation {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  25% {transform: translateY(30); }
+  30%, 74% {opacity: 0; }
+  75% {transform: translateY(-15); }
+}
+
+.animate-register-animation {
+  animation: registerAnimation 1s ease-in-out infinite;
 }
