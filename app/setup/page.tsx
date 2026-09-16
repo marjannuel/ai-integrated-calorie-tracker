@@ -1,26 +1,42 @@
 'use client';
 import { Cake, UserRound, VenusAndMars, Activity } from 'lucide-react';
 import { useState } from 'react';
+import { createClient } from '@/utils/supabase/client';
 
 export default function SetupPage(){
-    const [formData, setFormData] = useState({
-        sex: '',
-        activeness: ''
-    });
+    const [sex, setSex] = useState('');
+    const [activeness, setActiveness] = useState('');
     const [userName, setUserName] = useState('');
     const [birthDate, setBirthDate] = useState('');
+    const [notif, setNotif] = useState('');
+    const [result, setResult] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-        ...prev,
-        [name]: value
-        }));
-    };
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const supabase = createClient();
+
+        const { data, error } = await supabase.from('profiles').insert({
+            name: userName,
+            birthdate: birthDate,
+            sex: sex,
+            activeness: activeness
+        }).select('*');
+
+        if (error) {
+            setNotif(error.message);
+        }
+
+        else {
+            setNotif('saved successfully');
+        }
+    }
 
     return(
         <div className="h-dvh w-full min-w-0 overflow-x-hidden flex flex-col justify-center items-center">
-            <form className="px-6 w-full max-w-md md:max-w-lg flex flex-col justify-center items-center gap-2">
+            <form className="px-6 w-full max-w-md md:max-w-lg flex flex-col justify-center items-center gap-2"
+            onSubmit={handleSubmit}>
                 <h1 className="font-mono text-center text-lg md:text-2xl w-full mb-15 md:mb-20">
                     First of all, kindly tell us what is your...
                 </h1>
@@ -50,8 +66,8 @@ export default function SetupPage(){
                     <VenusAndMars className='w-6 h-6 md:w-8 md:h-8'/>
                     <select
                         name="sex"
-                        value={formData.sex}
-                        onChange={handleChange}
+                        value={sex}
+                        onChange={(e) => setSex(e.currentTarget.value)}
                         className='border md:border-2 outline-none rounded-lg py-1 dark:bg-neutral-800 w-44 md:w-64 px-1 text-sm md:text-base font-sans md:hover:cursor-pointer'
                         required
                     >
@@ -66,8 +82,8 @@ export default function SetupPage(){
                     <Activity className='w-6 h-6 md:w-8 md:h-8'/>
                     <select
                         name="activeness"
-                        value={formData.activeness}
-                        onChange={handleChange}
+                        value={activeness}
+                        onChange={(e) => setActiveness(e.currentTarget.value)}
                         className='border md:border-2 outline-none rounded-lg py-1 dark:bg-neutral-800 w-44 md:w-64 px-1 text-sm md:text-base font-sans'
                         required
                     >
@@ -79,9 +95,13 @@ export default function SetupPage(){
                         <option value="active" className="bg-zinc-900 text-white">Very Active</option>
                     </select>
                 </div>
-                <button className='mt-5 md:mt-7 text-sm md:text-base font-sans border w-52 md:w-76 py-1 md:py-1.5 rounded-lg bg-amber-500 text-neutral-900 border-amber-500 md:hover:cursor-pointer md:hover:bg-amber-600'>
+                <button className='mt-5 md:mt-7 text-sm md:text-base font-sans border w-52 md:w-76 py-1 md:py-1.5 rounded-lg bg-amber-500 text-neutral-900 border-amber-500 md:hover:cursor-pointer md:hover:bg-amber-600'
+                type='submit'>
                     Confirm
                 </button>
+                <p className={`capitalize mt-2 md:mt-3 ${result? 'text-amber-500' : 'text-red-500'}`}>
+                    {notif}
+                </p>
             </form>
         </div>
     )

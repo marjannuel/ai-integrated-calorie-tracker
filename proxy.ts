@@ -22,15 +22,21 @@ export async function proxy(request: NextRequest){
         }
     )
     const { data } = await supabase.auth.getClaims();
+
     const pathname = request.nextUrl.pathname
+
     const protectedRoutes = ['/dashboard', '/setup']
 
-    if (protectedRoutes.includes(pathname)) {
-        if (!data?.claims) {
+    if (!data?.claims && protectedRoutes.includes(pathname)) {
             return NextResponse.redirect(
                 new URL("/login", request.url)
             );
-        }
+    }
+
+    if (data?.claims && !protectedRoutes.includes(pathname)) {
+            return NextResponse.redirect(
+                new URL("/setup", request.url)
+            );
     }
 
     return supabaseResponse;
