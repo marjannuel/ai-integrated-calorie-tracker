@@ -84,7 +84,7 @@ export default function LoginPage(){
         <div className="w-full h-dvh min-w-0 overflow-x-hidden flex justify-center items-center">
             <form className="flex flex-col justify-center items-center w-full max-w-md md:max-w-lg gap-1"
             onSubmit={handleLogin}>
-                <h1 className="text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] dark:border-neutral-700 py-1 md:py-2 select-none shadow-[0_8px_6px_-6px] shadow-neutral-800">Login</h1>
+                <h1 className="text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] border-neutral-700 dark:border-neutral-200 py-1 md:py-2 select-none shadow-[0_8px_6px_-8px] shadow-neutral-800 dark:shadow-neutral-100">Login</h1>
                 <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                     <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
                     <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
@@ -125,6 +125,7 @@ export default function LoginPage(){
                     {notif2}
                 </p>
             </form>
+
             {isOpen && (
                 <div className='fixed inset-0 z-50 bg-black/80 flex justify-center items-center'
                 onClick={() =>  setIsOpen(false)}>
@@ -135,7 +136,7 @@ export default function LoginPage(){
                             <X className='text-red-500 w-6 h-6 md:w-8 md:h-8 stroke-2 md:hover:cursor-pointer'
                             onClick={() => setIsOpen(false)}/>
                         </div>
-                        <h1 className='text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] dark:border-neutral-700 pb-1 md:pb-2 select-none shadow-[0_8px_6px_-6px] shadow-neutral-800'>
+                        <h1 className='text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] border-neutral-700 dark:border-neutral-200 pb-1 md:pb-2 select-none shadow-[0_8px_6px_-6px] shadow-neutral-800 dark:shadow-neutral-100'>
                             Register
                         </h1>
                         <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
