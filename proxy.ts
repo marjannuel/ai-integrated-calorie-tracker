@@ -26,6 +26,7 @@ export async function proxy(request: NextRequest){
     const pathname = request.nextUrl.pathname
 
     const protectedRoutes = ['/dashboard', '/setup']
+    const publicRoutes = ['/', '/login']
 
     if (!data?.claims && protectedRoutes.includes(pathname)) {
             return NextResponse.redirect(
@@ -33,7 +34,7 @@ export async function proxy(request: NextRequest){
             );
     }
 
-    if (data?.claims && !protectedRoutes.includes(pathname)) {
+    if (data?.claims && publicRoutes.includes(pathname)) {
             return NextResponse.redirect(
                 new URL("/setup", request.url)
             );
