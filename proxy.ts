@@ -22,11 +22,13 @@ export async function proxy(request: NextRequest){
         }
     )
     const { data } = await supabase.auth.getClaims();
+    const { data : { user } } = await supabase.auth.getUser();
+    const { data : profile } = await supabase.from('profiles').select('id').maybeSingle();
 
-    const pathname = request.nextUrl.pathname
+    const pathname = request.nextUrl.pathname;
 
-    const protectedRoutes = ['/dashboard', '/setup']
-    const publicRoutes = ['/', '/login']
+    const protectedRoutes = ['/dashboard', '/setup'];
+    const publicRoutes = ['/', '/login'];
 
     if (!data?.claims && protectedRoutes.includes(pathname)) {
             return NextResponse.redirect(
@@ -37,6 +39,12 @@ export async function proxy(request: NextRequest){
     if (data?.claims && publicRoutes.includes(pathname)) {
             return NextResponse.redirect(
                 new URL("/setup", request.url)
+            );
+    }
+
+    if (data?.claims && (profile?.id === user?.id) && (pathname === '/setup')) {
+            return NextResponse.redirect(
+                new URL("/dashboard", request.url)
             );
     }
 
