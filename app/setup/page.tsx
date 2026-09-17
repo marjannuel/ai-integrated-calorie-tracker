@@ -2,8 +2,10 @@
 import { Cake, UserRound, VenusAndMars, Activity } from 'lucide-react';
 import { useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
 
 export default function SetupPage(){
+    const router = useRouter();
     const [sex, setSex] = useState('');
     const [activeness, setActiveness] = useState('');
     const [userName, setUserName] = useState('');
@@ -14,22 +16,36 @@ export default function SetupPage(){
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setNotif('');
+        setIsLoading(true);
 
         const supabase = createClient();
 
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (!user) {
+            router.push('/login');
+        }
+
         const { data, error } = await supabase.from('profiles').insert({
+            id: user?.id,
             name: userName,
             birthdate: birthDate,
             sex: sex,
             activeness: activeness
-        }).select('*');
+        });
 
         if (error) {
             setNotif(error.message);
+            setResult(false);
+            setIsLoading(false);
         }
 
         else {
             setNotif('saved successfully');
+            setResult(true);
+            setIsLoading(false);
+            router.push('/dashboard')
         }
     }
 
@@ -96,10 +112,11 @@ export default function SetupPage(){
                     </select>
                 </div>
                 <button className='mt-5 md:mt-7 text-sm md:text-base font-sans border w-52 md:w-76 py-1 md:py-1.5 rounded-lg bg-amber-500 text-neutral-900 border-amber-500 md:hover:cursor-pointer md:hover:bg-amber-600'
-                type='submit'>
+                type='submit'
+                disabled={isLoading}>
                     Confirm
                 </button>
-                <p className={`capitalize mt-2 md:mt-3 ${result? 'text-amber-500' : 'text-red-500'}`}>
+                <p className={`capitalize mt-2 md:mt-3 text-center text-sm md:text-base ${result? 'text-amber-500' : 'text-red-500'}`}>
                     {notif}
                 </p>
             </form>
