@@ -63,7 +63,7 @@ export default function DashboardPage(){
                     <div className="mt-2 w-full flex flex-col items-center justify-center gap-2">
                         <p className="font-thin"><span className="font-semibold">Enter:</span> Food Name & Portion</p>
                         <form className="w-[80%] flex justify-center items-center gap-1">
-                            <input className="w-full border rounded-xl dark:bg-neutral-800 font-sans px-2 py-1 text-sm outline-none focus:border-amber-500"
+                            <input className="w-full border rounded-xl bg-white dark:bg-neutral-900 font-sans px-2 py-1 text-sm outline-none focus:border-amber-500"
                             placeholder={`1 slice of whole wheat toast`}>
                             </input>
                             <button className="border rounded-xl py-1 w-[20%] flex justify-center items-center bg-green-500 font-sans border-green-500">

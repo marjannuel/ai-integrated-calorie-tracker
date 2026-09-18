@@ -87,7 +87,7 @@ export default function LoginPage(){
                 <h1 className="text-center text-lg md:text-2xl font-bold border-b-[1] w-[80%] border-neutral-700 dark:border-neutral-200 py-1 md:py-2 select-none shadow-[0_8px_6px_-8px] shadow-neutral-800 dark:shadow-neutral-100">Login</h1>
                 <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                     <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                    <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                    <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-900 bg-white'
                     type='email'
                     name='email'
                     placeholder='example@email.com'
@@ -96,14 +96,14 @@ export default function LoginPage(){
                 </div>
                 <div className='relative flex justify-center gap-2 items-center'>
                     <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                    <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                    <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-900 bg-white'
                     type={showPassword? 'text' : 'password'}
                     name='password'
                     placeholder='***********'
                     value={password}
                     onChange={(e) => setPassword(e.currentTarget.value)}>
                     </input>
-                    <button className='absolute right-2 z-10 bg-white dark:bg-neutral-800 p-1 flex justify-center items-center'
+                    <button className='absolute right-2 z-10 bg-white dark:bg-neutral-900 p-1 flex justify-center items-center'
                     type='button'
                     onClick={toggleView}>
                         <Eye className='w-4 h-4 stroke-1 md:stroke-[1.5] md:hover:cursor-pointer'/>
@@ -129,7 +129,7 @@ export default function LoginPage(){
             {isOpen && (
                 <div className='fixed inset-0 z-50 bg-black/80 flex justify-center items-center'
                 onClick={() =>  setIsOpen(false)}>
-                    <form className='relative z-10 dark:bg-neutral-900 bg-neutral-200 w-[90%] max-w-md md:max-w-lg border-3 rounded-3xl border-white dark:border-neutral-500 flex flex-col items-center gap-1 pb-5'
+                    <form className='relative z-10 dark:bg-neutral-800 bg-neutral-200 w-[90%] max-w-md md:max-w-lg border-3 rounded-3xl border-white dark:border-neutral-500 flex flex-col items-center gap-1 pb-5'
                     onSubmit={handleRegister}
                     onClick={(e) => e.stopPropagation()}>
                         <div className='w-[95%] pt-1 md:pt-2 flex justify-end items-center'>
@@ -141,7 +141,7 @@ export default function LoginPage(){
                         </h1>
                         <div className='flex justify-center gap-2 items-center mt-4 md:mt-6'>
                             <Mail className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                            <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                            <input className='border md:border-2 rounded-2xl text-sm md:text-base py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-900 bg-white'
                             type='email'
                             name='email'
                             placeholder='example@email.com'
@@ -152,7 +152,7 @@ export default function LoginPage(){
                         </div>
                         <div className='relative flex justify-center gap-2 items-center'>
                             <Key className='w-6 h-6 md:w-8 md:h-8 stroke-1'/>
-                            <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-800'
+                            <input className='border md:border-2 rounded-2xl text-sm md:text-base  py-1 px-2 font-sans w-44 md:w-64 outline-0 focus:border-amber-500 dark:bg-neutral-900 bg-white'
                             type={showPassword? 'text' : 'password'}
                             name='password'
                             placeholder='***********'
@@ -160,7 +160,7 @@ export default function LoginPage(){
                             value={password}
                             onChange={(e) => setPassword(e.currentTarget.value)}
                             ></input>
-                            <button className='absolute right-2 z-10 bg-neutral-200 dark:bg-neutral-800 p-1 flex justify-center items-center'
+                            <button className='absolute right-2 z-10 bg-white dark:bg-neutral-900 p-1 flex justify-center items-center'
                             type='button'
                             onClick={toggleView}>
                                 <Eye className='w-4 h-4 stroke-1 md:stroke-[1.5] md:hover:cursor-pointer'/>

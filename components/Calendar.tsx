@@ -15,14 +15,14 @@ export default function Calendar(){
 
     return(
         <div className="mx-2 mt-5 w-full flex flex-col justify-center items-center border-3 rounded-2xl overflow-hidden">
-            <div className="py-1 w-full flex items-center justify-center font-semibold uppercase border-b-3 bg-neutral-400 dark:bg-neutral-500">
+            <div className="py-1 w-full flex items-center justify-center font-semibold uppercase border-b-3 bg-neutral-400 dark:bg-neutral-600">
                 {months.map((name, i) =>
                     <h1 key={i}>
                         {i === month? name : ''}
                     </h1>
                 )}
             </div>
-            <div className="grid grid-cols-7 w-full justify-items-center">
+            <div className="grid grid-cols-7 w-full justify-items-center bg-white dark:bg-neutral-900">
                 <div className="text-red-500">S</div>
                 <div>M</div>
                 <div>T</div>
