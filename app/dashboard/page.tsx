@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Menu, X, LogOut, SquarePen } from 'lucide-react';
+import { Menu, X, LogOut, SquarePen, Plus } from 'lucide-react';
 import { useRouter } from "next/navigation";
 import Calendar from "@/components/Calendar";
 
 export default function DashboardPage(){
+    const [today, setToday] = useState('Date');
     const router = useRouter();
     const [currentUserName, setCurrentUserName] = useState('User Name');
     const [menuOpen, setMenuOpen] = useState(false);
@@ -22,6 +23,14 @@ export default function DashboardPage(){
             }
         }
         fetchUser()
+    }, []);
+
+    useEffect(() => {
+        const grabDate = () => {
+            const dateToday = new Date();
+            setToday(dateToday.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric'}));
+        }
+        grabDate();
     }, [])
 
     const handleLogout = async () => {
@@ -29,7 +38,7 @@ export default function DashboardPage(){
         await supabase.auth.signOut();
         router.push('/login');
 
-    }
+    };
 
     return(
         <div className="h-dvh w-full min-w-0 overflow-x-hidden flex">
@@ -43,11 +52,25 @@ export default function DashboardPage(){
                         <Menu className="w-6 h-6" />
                     </button>
                 </div>
-                <div className="flex flex-col items-center mt-5 px-2">
-                    <h1 className="text-xl font-mono font-thin text-center">
+                <div className="flex flex-col items-center mt-5 px-2 w-full font-thin">
+                    <h1 className="text-2xl font-mono text-center">
                         Welcome! Here's Your Data:
                     </h1>
                     <Calendar />
+                    <h2 className="w-full mt-5 text-lg uppercase font-normal">Today: 
+                        <span className="dark:text-neutral-400 text-neutral-500 capitalize font-normal"> ({today}) </span> 
+                    </h2>
+                    <div className="mt-2 w-full flex flex-col items-center justify-center gap-2">
+                        <p>Enter: Food Name & Portion</p>
+                        <form className="w-[80%] flex justify-center items-center gap-1">
+                            <input className="w-full border rounded-xl dark:bg-neutral-800 font-sans px-2 py-1 text-sm outline-none focus:border-amber-500"
+                            placeholder="1 slice of whole wheat toast">
+                            </input>
+                            <button className="border rounded-xl py-1 w-[20%] flex justify-center items-center bg-green-500 font-sans border-green-500">
+                                <Plus className="w-5.5 h-5.5"/>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div> 
 

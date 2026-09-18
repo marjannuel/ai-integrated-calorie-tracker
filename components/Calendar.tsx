@@ -1,5 +1,4 @@
-'use client';
-import { useEffect, useState } from "react";
+
 
 export default function Calendar(){
     const date = new Date();
@@ -37,7 +36,8 @@ export default function Calendar(){
                 ))}
 
                 {numberOfBox.map((num, i) => (
-                    <button key={i}>
+                    <button key={i}
+                    className="py-2">
                         {num}
                     </button>
                 ))}
