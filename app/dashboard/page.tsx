@@ -52,19 +52,19 @@ export default function DashboardPage(){
                         <Menu className="w-6 h-6" />
                     </button>
                 </div>
-                <div className="flex flex-col items-center mt-5 px-2 w-full font-thin">
+                <div className="flex flex-col items-center mt-5 px-2 w-full">
                     <h1 className="text-2xl font-mono text-center">
                         Welcome! Here's Your Data:
                     </h1>
                     <Calendar />
-                    <h2 className="w-full mt-5 text-lg uppercase font-normal">Today: 
-                        <span className="dark:text-neutral-400 text-neutral-500 capitalize font-normal"> ({today}) </span> 
+                    <h2 className="w-full mt-5 text-lg uppercase font-semibold">Today: 
+                        <span className="capitalize font-thin"> ({today}) </span> 
                     </h2>
                     <div className="mt-2 w-full flex flex-col items-center justify-center gap-2">
-                        <p>Enter: Food Name & Portion</p>
+                        <p className="font-thin"><span className="font-semibold">Enter:</span> Food Name & Portion</p>
                         <form className="w-[80%] flex justify-center items-center gap-1">
                             <input className="w-full border rounded-xl dark:bg-neutral-800 font-sans px-2 py-1 text-sm outline-none focus:border-amber-500"
-                            placeholder="1 slice of whole wheat toast">
+                            placeholder={`1 slice of whole wheat toast`}>
                             </input>
                             <button className="border rounded-xl py-1 w-[20%] flex justify-center items-center bg-green-500 font-sans border-green-500">
                                 <Plus className="w-5.5 h-5.5"/>
