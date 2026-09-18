@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Menu, X, LogOut, SquarePen } from 'lucide-react';
 import { useRouter } from "next/navigation";
+import Calendar from "@/components/Calendar";
 
 export default function DashboardPage(){
     const router = useRouter();
@@ -46,6 +47,7 @@ export default function DashboardPage(){
                     <h1 className="text-xl font-mono font-thin text-center">
                         Welcome! Here's Your Data:
                     </h1>
+                    <Calendar />
                 </div>
             </div> 
 
